@@ -47,13 +47,13 @@ def _get_text_from_basic_info_table(table_element, row_name):
 
 
 def output_courses_info_to_xlsx(file_path, curses_urls_list, class_namedtuple):
-    wb = Workbook()
-    ws = wb.active
-    ws.append(list(column for column in class_namedtuple._fields))
+    work_book = Workbook()
+    work_sheet = work_book.active
+    work_sheet.append(list(column for column in class_namedtuple._fields))
     for course_url in curses_urls_list:
         course_info = get_course_info(course_url)
-        ws.append(list(column for column in course_info))
-    wb.save(file_path)
+        work_sheet.append(list(column for column in course_info))
+    work_book.save(file_path)
 
 
 def get_args():
@@ -66,5 +66,5 @@ if __name__ == '__main__':
     args = get_args()
     file_path = args.path
     size = 20
-    curses_urls_list = get_courses_urls_list(size)
-    output_courses_info_to_xlsx(file_path, curses_urls_list, CourseData)
+    courses_urls_list = get_courses_urls_list(size)
+    output_courses_info_to_xlsx(file_path, courses_urls_list, CourseData)
