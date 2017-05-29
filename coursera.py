@@ -4,6 +4,7 @@ from lxml import etree
 from collections import namedtuple
 from bs4 import BeautifulSoup
 from openpyxl import Workbook
+import random
 
 
 CourseData = namedtuple('CourseData', 'title,language,resent_date,count_weeks,rating')
@@ -13,8 +14,9 @@ def get_courses_urls_list(output_list_size):
     url = 'https://www.coursera.org/sitemap~www~courses.xml'
     response = requests.get(url)
     tree = etree.fromstring(response.content)
-    return tree.xpath(
-        '//ns:url/ns:loc/text()', namespaces={'ns': 'http://www.sitemaps.org/schemas/sitemap/0.9'})[:output_list_size]
+    all_courses_urls_list = tree.xpath(
+        '//ns:url/ns:loc/text()', namespaces={'ns': 'http://www.sitemaps.org/schemas/sitemap/0.9'})
+    return random.sample(all_courses_urls_list, output_list_size)
 
 
 def get_course_info(course_slug):
