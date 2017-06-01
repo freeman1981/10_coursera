@@ -4,7 +4,7 @@ To get excel file with twenty courses info just run
 ```
 python3 coursera.py output_file_name
 ```
-Do not forget pip install -r requirements.txt - better in virtual enviroment.
+Do not forget ```pip install -r requirements.txt``` - better in virtual enviroment.
 
 
 # Project Goals
