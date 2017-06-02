@@ -51,10 +51,10 @@ def _get_text_from_basic_info_table(table_element, row_name):
 def output_courses_info_to_xlsx(file_path, curses_urls_list, class_namedtuple):
     work_book = Workbook()
     work_sheet = work_book.active
-    work_sheet.append([column for column in class_namedtuple._fields])
+    work_sheet.append(class_namedtuple._fields)
     for course_url in curses_urls_list:
         course_info = get_course_info(course_url)
-        work_sheet.append([column for column in course_info])
+        work_sheet.append(course_info)
     work_book.save(file_path)
 
 
