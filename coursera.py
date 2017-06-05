@@ -41,9 +41,6 @@ def get_course_info(course_slug):
 
 
 def _get_text_from_basic_info_table(table_element, row_name):
-    # Не совсем понятно как иметь обратную связь с Евгением,
-    # Илью нашел для прямых сообщений)
-    # - непонятно как можно здесь использовать list comprehension
     for row in table_element.find_all('tr'):
         if row.find_all('td')[0].text == row_name:
             return row.find_all('td')[-1].text
